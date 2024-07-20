@@ -15,7 +15,9 @@ function App() {
   async function getData() {
     setFetching(true);
 
-    const res = await fetch("http://localhost:8000/api/users/all");
+    const res = await fetch(
+      "https://userinfo-api-production.up.railway.app/api/users/all"
+    );
     const data = await res.json();
 
     if (!res.ok) {
@@ -35,13 +37,16 @@ function App() {
 
   const addUser = async (firstName, lastName, email, age, city) => {
     const newUser = { firstName, lastName, email, age, city };
-    const res = await fetch("http://localhost:8000/api/users/all", {
-      method: "POST",
-      body: JSON.stringify(newUser),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://userinfo-api-production.up.railway.app/api/users/all",
+      {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
 
     const data = await res.json();
 
@@ -56,13 +61,16 @@ function App() {
   };
 
   const editUser = async (id, updatedUser) => {
-    const res = await fetch(`http://localhost:8000/api/users/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify(updatedUser),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://userinfo-api-production.up.railway.app/api/users/${id}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(updatedUser),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
 
     if (!res.ok) {
       console.error("ERROR: Update not happen");
@@ -76,9 +84,12 @@ function App() {
   };
 
   const deleteUser = async (id) => {
-    const res = await fetch(`http://localhost:8000/api/users/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `https://userinfo-api-production.up.railway.app/api/users/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await res.json();
     getData();
   };
