@@ -15,9 +15,7 @@ function App() {
   async function getData() {
     setFetching(true);
 
-    const res = await fetch(
-      "https://userinfo-api-production.up.railway.app/api/users/all"
-    );
+    const res = await fetch("https://mern-userinfo.onrender.com/api/users/all");
     const data = await res.json();
 
     if (!res.ok) {
@@ -38,7 +36,7 @@ function App() {
   const addUser = async (firstName, lastName, email, age, city) => {
     const newUser = { firstName, lastName, email, age, city };
     const res = await fetch(
-      "https://userinfo-api-production.up.railway.app/api/users/all",
+      "https://mern-userinfo.onrender.com/api/users/all",
       {
         method: "POST",
         body: JSON.stringify(newUser),
@@ -62,7 +60,7 @@ function App() {
 
   const editUser = async (id, updatedUser) => {
     const res = await fetch(
-      `https://userinfo-api-production.up.railway.app/api/users/${id}`,
+      `https://mern-userinfo.onrender.com/api/users/${id}`,
       {
         method: "PATCH",
         body: JSON.stringify(updatedUser),
@@ -85,7 +83,7 @@ function App() {
 
   const deleteUser = async (id) => {
     const res = await fetch(
-      `https://userinfo-api-production.up.railway.app/api/users/${id}`,
+      `https://mern-userinfo.onrender.com/api/users/${id}`,
       {
         method: "DELETE",
       }
