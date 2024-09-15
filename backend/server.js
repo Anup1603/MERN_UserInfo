@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // router
+app.get("/", (req, res) => {
+    res.send("<h1>Server Started successfully...</h1>")
+});
+
 app.use("/api/users", userRouter);
 
 
